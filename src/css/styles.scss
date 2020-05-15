@@ -1,0 +1,376 @@
+// === Mixins ===
+@mixin font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+// === / Mixins ===
+
+// === Variables ===
+$color-main: #059bc1;
+$color-white: #ffffff;
+$color-black: #000000;
+// === / Variables ===
+
+// === Common ===
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.body,
+a,span{
+  font-family: 'Montserrat', sans-serif;
+}
+.section-outer {}
+.section-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+// === / Common ===
+
+// === Header ===
+.header{
+  height: 100px;
+  background-color: #f8f8f8;
+  margin-bottom: 35px;
+  .section-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-main-ref{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 390px;
+
+    &__logo img{
+      width: 130px;
+    }
+    &__item{
+      color: $color-black;
+      text-decoration: none;
+      font-size: 1.168rem;
+    }
+  }
+  &-buttons{
+    font-size: 1.125rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+
+    &__settings{
+      text-decoration: none;
+      color: $color-main;
+    }
+    &__exit{
+      text-decoration: none;
+      color: $color-white;
+      display: inline-block;
+      background-color: $color-main;
+      height: 38px;
+      line-height: 36px;
+      padding: 0px 20px;
+      border-radius: 19px;
+    }
+    &__social{
+      display: block;
+      width: 40px;
+      height: 35px;
+      background: url(../img/telegram_icon.svg) no-repeat 50% 50%;
+      background-size: contain;
+    }
+  }
+}
+// === / Header ===
+
+// === Athlete info ===
+.athlete-info{
+  margin-bottom: 15px;
+  .section-inner{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-avatar{
+    margin-right: 90px;
+    position: relative;
+    max-width: 340px;
+
+    &__photo{
+      width: 340px;
+      height: 360px;
+      background-image: url(../img/avatar-001.jpg);
+      background-position: -200px 0px;
+      background-repeat: no-repeat;
+      border-radius: 1rem;
+    }
+    &__fullname{
+      background-color: $color-white;
+      position: absolute;
+      display: block;
+      bottom: 20px;
+      left: 20px;
+      width: 260px;
+      padding: 20px;
+      border-radius: 16px;
+      .name{
+        font-size: 1.125rem;
+        font-weight: 700;
+        display: block;
+      }
+      .date-birth{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9375rem;
+      }
+    }
+  }
+  &-charts{
+    flex-grow: 1;
+    font-size: 1.125rem;
+    margin-top: 26px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__title{
+      font-weight: bold;
+    }
+    &__wrapper{
+      display: flex;
+      justify-content: space-between;
+
+      .chart-item{
+        text-align: center;
+        color: #8c9198;
+
+        &__svg-wrapper{
+          width: 130px;
+          position: relative;
+
+        }
+        &__svg{
+          display: block;
+          margin: 0px auto;
+          &.pink{
+            stroke: url(#pink);
+            &+.chart-item__number{
+              color: #e61d56;
+            }
+          }
+          &.purple{
+            stroke: url(#purple);
+            &+.chart-item__number{
+              color: #c81ac7;
+            }
+          }
+          &.dodgerblue{
+            stroke: url(#dodgerblue);
+            &+.chart-item__number{
+              color: #1c6fdf;
+            }
+          }
+          &.lime{
+            stroke: url(#lime);
+            &+.chart-item__number{
+              color: #27ca08;
+            }
+          }
+
+          .circle-bg{
+            fill: none;
+            stroke: #d7d7d7;
+            stroke-width: 4;
+          }
+          .circle{
+            fill: none;
+            stroke-width: 4;
+            animation: progress 1.5s ease-out forwards;
+          }
+          .number{
+            font-family: 'Montserrat', sans-serif;
+            text-anchor: middle;
+            fill: #666;
+            stroke: none;
+          }
+
+          @keyframes progress {
+            0% {
+              stroke-dasharray: 0 100;
+            }
+          }
+        }
+        &__number{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 30px;
+          font-weight: bold;
+          font-style: italic;
+        }
+        &__name{}
+      }
+    }
+    &__coach{
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      // text-align: center;
+
+      .name{
+        font-weight: bold;
+        font-style: italic;
+      }
+    }
+  }
+}
+// === / Athlete info ===
+
+// === Training statistics ===
+.training-statistics{
+  .section-inner{
+    background-color: #f8f9fa;
+    padding: 15px 50px;
+    border-radius: 1rem;
+  }
+  &__title{
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__table-header{
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 0.875rem;
+    color: #a7a7a7;
+    display: flex;
+    border-bottom: 1px solid #dddddd;
+
+    .date-location{
+      display: block;
+      width: 130px;
+    }
+    .wrapper{
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      padding-left: 50px;
+      
+    }
+  }
+
+  &-table{
+    display: flex;
+  }
+  .main-slider{
+    position: relative;
+    width: 130px;
+    margin-bottom: 50px;
+
+    .slick-track{
+      display: block;
+    }
+
+    .slick-list{
+      overflow: hidden;
+    }
+
+    .slick-arrow{
+      position: absolute;
+      bottom: -45px;
+      z-index: 10;
+      font-size: 0;
+      width: 15px;
+      height: 10px;
+      border: 0;
+      padding: 0;
+      margin: 10px;
+      
+      &.slick-prev{
+        background: url(../img/arrow-slider-up.svg) 0 0 / 100% no-repeat;
+        left: 0;
+      }
+      &.slick-next{
+        background: url(../img/arrow-slider-down.svg) 0 0 / 100% no-repeat;
+        right: 0;
+      }
+    }
+    &__item{
+      height: 75px;
+      border-right: 1px solid #dddddd;
+      border-bottom: 1px solid #dddddd;
+      color: #ababab;
+      font-size: 1rem;//0.875rem;
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      justify-content: center;
+
+      time{
+        // display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+      }
+
+      &.slick-current{
+        color: $color-main;
+      }
+    }
+
+  }
+  .info-slider{
+    position: relative;
+    padding-left: 50px;
+    padding-top: 30px;
+    width: 80%;
+    height: 290px;
+
+    .slick-track{
+      display: flex;
+      flex-direction: column;
+      // align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    // .slick-list{
+    //   overflow: hidden;
+    // }
+
+    &__item{
+      text-align: center;
+
+      .row-property{
+        display: flex;
+        justify-content: space-between;
+        line-height: 2rem;
+
+        &__style{}
+        &__length{
+          font-weight: 900;
+          font-style: italic;
+
+          &::after{
+            content: " м";
+          }
+        }
+        &__none{
+          display: block;
+          width: 0.9rem;
+          height: 0.9rem;
+          background: url(../img/cancel.svg) 0 0 / 100% no-repeat;
+        }
+        &__mark{
+          display: block;
+          height: 1rem;
+          width: 120px;
+          background-image: linear-gradient(to right, #2ccb09, #8ed515);
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+// === / Training statistics ===
