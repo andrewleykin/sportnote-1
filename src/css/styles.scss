@@ -102,9 +102,6 @@ a,span{
     &__photo{
       width: 340px;
       height: 360px;
-      background-image: url(../img/avatar-001.jpg);
-      background-position: -200px 0px;
-      background-repeat: no-repeat;
       border-radius: 1rem;
     }
     &__fullname{
@@ -113,7 +110,7 @@ a,span{
       display: block;
       bottom: 20px;
       left: 20px;
-      width: 260px;
+      width: 300px;
       padding: 20px;
       border-radius: 16px;
       .name{
@@ -231,6 +228,8 @@ a,span{
 
 // === Training statistics ===
 .training-statistics{
+  overflow: hidden;
+
   .section-inner{
     background-color: #f8f9fa;
     padding: 15px 50px;
@@ -269,6 +268,7 @@ a,span{
     position: relative;
     width: 130px;
     margin-bottom: 50px;
+    min-width: 0;
 
     .slick-track{
       display: block;
@@ -286,16 +286,25 @@ a,span{
       width: 15px;
       height: 10px;
       border: 0;
-      padding: 0;
-      margin: 10px;
+      padding: 20px;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 15px 10px;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover{
+        box-shadow: 0 0 0 2px #e4e4e4;
+        transition: all 300ms ease;
+      }
       
       &.slick-prev{
-        background: url(../img/arrow-slider-up.svg) 0 0 / 100% no-repeat;
-        left: 0;
+        background-image: url(../img/arrow-slider-up.svg);
+        left: 5px;
       }
       &.slick-next{
-        background: url(../img/arrow-slider-down.svg) 0 0 / 100% no-repeat;
-        right: 0;
+        background-image: url(../img/arrow-slider-down.svg);
+        right: 5px;
       }
     }
     &__item{
@@ -327,6 +336,7 @@ a,span{
     padding-top: 30px;
     width: 80%;
     height: 290px;
+    min-width: 0;
 
     .slick-track{
       display: flex;
@@ -346,6 +356,7 @@ a,span{
         display: flex;
         justify-content: space-between;
         line-height: 2rem;
+        align-items: center;
 
         &__style{}
         &__length{
@@ -358,16 +369,33 @@ a,span{
         }
         &__none{
           display: block;
-          width: 0.9rem;
-          height: 0.9rem;
-          background: url(../img/cancel.svg) 0 0 / 100% no-repeat;
+          width: 1.8rem;
+          height: 1.8rem;
+          background: url(../img/cancel.svg) 50% 50% / 0.9rem no-repeat;
+          cursor: pointer;
         }
         &__mark{
           display: block;
           height: 1rem;
           width: 120px;
-          background-image: linear-gradient(to right, #2ccb09, #8ed515);
           border-radius: 3px;
+
+          &.one{
+            background-image: linear-gradient(to right, #7d4cf0, #183cdc);
+          }
+          &.two{
+            background-image: linear-gradient(to right, #f04c99, #c730db);
+          }
+          &.three{
+            background-image: linear-gradient(to right, #f79132, #f53d99);
+          }
+          &.four{
+            background-image: linear-gradient(to right, #f7d932, #d2fd35);
+          }
+          &.five{
+            background-image: linear-gradient(to right, #2ccb09, #8ed515);
+          }
+          
         }
       }
     }

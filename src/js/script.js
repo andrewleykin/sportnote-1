@@ -5,15 +5,16 @@ $(document).ready(function(){
     vertical: true,
     infinite: false,
     asNavFor: ".info-slider",
-    initialSlide: 0
+    initialSlide: 0,
+    focusOnSelect: true
   });
 
   $('.info-slider').slick({
     arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
     fade: true,
-    vertical: true,
+    // vertical: true,
     infinite: false,
     asNavFor: ".main-slider",
     initialSlide: 0
