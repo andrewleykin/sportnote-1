@@ -229,6 +229,7 @@ a,span{
 // === Training statistics ===
 .training-statistics{
   overflow: hidden;
+  margin-bottom: 15px;
 
   .section-inner{
     background-color: #f8f9fa;
@@ -402,3 +403,227 @@ a,span{
   }
 }
 // === / Training statistics ===
+
+// === Calendar ===
+.calendar{
+  .section-inner{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .calendar-event-info{
+    position: relative;
+
+    &::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.47)
+    }
+
+    &__message-wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: absolute;
+      // flex-basis: 100%;
+      height: 70%;
+      padding: 36px 40px;
+
+      & span{
+        color: $color-white;
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        z-index: 1;
+        width: 80%;
+      }
+    }
+    
+  }
+
+  #calendar{
+    // width: 60%;
+    background-color: #000000;
+    color: $color-white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 37px;
+  
+  th, td{
+    border: none;
+  }
+  
+  .fc-toolbar h2{
+    text-transform: capitalize;
+  }
+
+  .fc-content {
+    font-size: 0;
+    height: 10px;
+  }
+
+  .fc-widget-content.fc-today{
+    background: none;
+
+    &::after{
+      content: '';
+      width: 1.4rem;
+      height: 1.4rem;
+      border: 2px solid #7ab046;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
+  .fc-day-header {
+    text-transform: uppercase;
+  }
+
+  .fc-day{
+    text-align: center;
+    position: relative;
+  }
+
+  .fc-more-cell{
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+  }
+  .fc-more{
+    font-size: 0;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    &::after{
+      content: '\2022';
+      color: #ecc30a;
+      font-size: 2rem;
+    }
+  }
+
+  .fc-event-container{
+    & .fc-event.fc-start.fc-not-end{
+      height: 26px;
+      background: linear-gradient(to right, #1596c4,  #1396c4);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    & .fc-event.fc-not-start.fc-end{
+      height: 26px;
+      background: linear-gradient(to right, #c356e7 , #ab5ee2);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    
+    &[colspan]{
+      // border: 1px solid red;
+      z-index: 1;
+  
+      &>a {
+        background: linear-gradient(to right, #c356e7,  #1396c4);
+        height: 26px;
+        border: none;
+        border-radius: 10px;
+      }
+    }
+    &:not([colspan]){
+      & .fc-event.fc-start.fc-end{
+        background: transparent;
+        border: none;
+        text-align: center;
+  
+        &::after{
+          content: '\2022';
+          color: #ecc30a;
+          font-size: 2rem;
+        }
+      }
+    }
+  
+  }
+  
+    .fc-day-top{
+      text-align: center;
+    }
+    .fc-day-number{
+    float: none;
+    font-weight: 700;
+    }
+
+    //gradients
+    $clr-1: #c356e7;
+    $clr-2: #9c64df;
+    $clr-3: #846ddb;
+    $clr-4: #6b77d6;
+    $clr-5: #537fd1;
+    $clr-6: #3889cb;
+    $clr-7: #1396c4;
+
+   .fc-event-container[colspan="2"]{
+    & .fc-event.fc-start.fc-not-end{
+      background: linear-gradient(to right, $clr-6 , $clr-7);
+    }
+    & .fc-event.fc-not-start.fc-end{
+      background: linear-gradient(to right, $clr-1 , $clr-2);
+    }
+  }
+  .fc-event-container[colspan="3"]{
+    & .fc-event.fc-start.fc-not-end{
+      background: linear-gradient(to right, $clr-5,  $clr-7);
+    }
+    & .fc-event.fc-not-start.fc-end{
+      background: linear-gradient(to right, $clr-1 , $clr-3);
+    }
+  }
+  .fc-event-container[colspan="4"]{
+    & .fc-event.fc-start.fc-not-end{
+      background: linear-gradient(to right,  $clr-4,  $clr-7);
+    }
+    & .fc-event.fc-not-start.fc-end{
+      background: linear-gradient(to right, $clr-1 ,  $clr-4);
+    }
+  }
+  .fc-event-container[colspan="5"]{
+    & .fc-event.fc-start.fc-not-end{
+      background: linear-gradient(to right, $clr-3,  $clr-7);
+    }
+    & .fc-event.fc-not-start.fc-end{
+      background: linear-gradient(to right, $clr-1 ,  $clr-5);
+    }
+  }
+  .fc-event-container[colspan="6"]{
+    & .fc-event.fc-start.fc-not-end{
+      background: linear-gradient(to right, $clr-2,  $clr-7);
+    }
+    & .fc-event.fc-not-start.fc-end{
+      background: linear-gradient(to right, $clr-1 , $clr-6);
+    }
+  }
+  .fc-event-container[colspan="7"]{
+    & .fc-event.fc-start.fc-not-end,
+    & .fc-event.fc-not-start.fc-end,
+    & .fc-event.fc-not-start.fc-not-end,
+    & .fc-event.fc-start.fc-end {
+      background: linear-gradient(to right, $clr-1,  $clr-7);
+    }
+  }
+
+  }
+
+  
+
+
+
+}
+// === / Calendar ===
