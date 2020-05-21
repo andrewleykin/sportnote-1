@@ -709,4 +709,31 @@ a, span {
   background: -webkit-gradient(linear, left top, right top, from(#c356e7), to(#1396c4));
   background: linear-gradient(to right, #c356e7, #1396c4);
 }
+
+.footer .section-inner {
+  height: 100px;
+  position: relative;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 15px;
+  line-height: 15px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-bottom: 33px;
+}
+
+.footer-copyright a {
+  color: #000000;
+  text-decoration: none;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.footer-copyright a:hover {
+  opacity: .6;
+}
 /*# sourceMappingURL=styles.css.map */

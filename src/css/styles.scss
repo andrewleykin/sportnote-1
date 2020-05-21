@@ -621,9 +621,34 @@ a,span{
 
   }
 
-  
-
-
-
 }
 // === / Calendar ===
+
+// === Footer ===
+.footer{
+  .section-inner{
+    height: 100px;
+    position: relative;
+  }
+  &-copyright{
+    text-align: center;
+    font-size: 15px;
+    line-height: 15px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-bottom: 33px;
+
+    a{
+      color: #000000;
+      text-decoration: none;
+      transition: 200ms;
+
+      &:hover{
+        opacity: .6;
+      }
+    }
+  }
+}
+// === / Footer ===
