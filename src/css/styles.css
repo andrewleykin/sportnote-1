@@ -18,6 +18,7 @@ a, span {
   height: 100px;
   background-color: #f8f8f8;
   margin-bottom: 35px;
+  overflow: hidden;
 }
 
 .header .section-inner {
@@ -90,8 +91,43 @@ a, span {
   display: block;
   width: 40px;
   height: 35px;
-  background: url(../img/telegram_icon.svg) no-repeat 50% 50%;
+  position: relative;
+}
+
+.header-buttons__social::before, .header-buttons__social::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   background-size: contain;
+  -webkit-transition: all 200ms ease 50ms;
+  transition: all 200ms ease 50ms;
+}
+
+.header-buttons__social::before {
+  background: url(../img/telegram_icon.svg) no-repeat 50% 50%;
+}
+
+.header-buttons__social::after {
+  background: url(../img/telegram_icon_blue.svg) no-repeat 50% 50%;
+  -webkit-transform: translate(-50px, 40px);
+          transform: translate(-50px, 40px);
+  opacity: 0;
+}
+
+.header-buttons__social:hover::before {
+  -webkit-transform: translate(50px, -40px);
+          transform: translate(50px, -40px);
+  opacity: 0;
+}
+
+.header-buttons__social:hover::after {
+  -webkit-transform: none;
+          transform: none;
+  opacity: 1;
 }
 
 .athlete-info {
@@ -500,6 +536,10 @@ a, span {
   position: relative;
 }
 
+.calendar .calendar-event-info img {
+  height: 100%;
+}
+
 .calendar .calendar-event-info::after {
   content: '';
   position: absolute;
@@ -541,10 +581,15 @@ a, span {
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   padding: 37px;
+  z-index: 1;
 }
 
 .calendar #calendar th, .calendar #calendar td {
   border: none;
+}
+
+.calendar #calendar .fc-dayGrid-view .fc-body .fc-row {
+  min-height: 3em;
 }
 
 .calendar #calendar .fc-toolbar h2 {
@@ -577,6 +622,11 @@ a, span {
   text-transform: uppercase;
 }
 
+.calendar #calendar .fc-day-top.fc-other-month {
+  opacity: 1;
+  color: #414b58;
+}
+
 .calendar #calendar .fc-day {
   text-align: center;
   position: relative;
@@ -601,6 +651,15 @@ a, span {
   content: '\2022';
   color: #ecc30a;
   font-size: 2rem;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+}
+
+.calendar #calendar .fc-event-container .fc-event {
+  bottom: 9px;
 }
 
 .calendar #calendar .fc-event-container .fc-event.fc-start.fc-not-end {
@@ -628,6 +687,9 @@ a, span {
   background: linear-gradient(to right, #c356e7, #1396c4);
   height: 26px;
   border: none;
+}
+
+.calendar #calendar .fc-event-container[colspan] .fc-event.fc-start.fc-end {
   border-radius: 10px;
 }
 
@@ -641,10 +703,18 @@ a, span {
   content: '\2022';
   color: #ecc30a;
   font-size: 2rem;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
+  top: 0;
 }
 
 .calendar #calendar .fc-day-top {
   text-align: center;
+  position: relative;
+  top: 15px;
+  z-index: 10;
 }
 
 .calendar #calendar .fc-day-number {

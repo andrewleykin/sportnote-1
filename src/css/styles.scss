@@ -32,6 +32,7 @@ a,span{
   height: 100px;
   background-color: #f8f8f8;
   margin-bottom: 35px;
+  overflow: hidden;
   .section-inner{
     display: flex;
     justify-content: space-between;
@@ -79,8 +80,37 @@ a,span{
       display: block;
       width: 40px;
       height: 35px;
-      background: url(../img/telegram_icon.svg) no-repeat 50% 50%;
-      background-size: contain;
+      position: relative;
+
+      &::before,
+      &::after{
+        content:'';
+        display: block;
+        position: absolute;
+        top: 0;right: 0;left: 0;bottom: 0;
+        background-size: contain;
+        transition: all 200ms ease 50ms;
+      }
+
+      &::before{
+        background: url(../img/telegram_icon.svg) no-repeat 50% 50%;
+      }
+      &::after{
+        background: url(../img/telegram_icon_blue.svg) no-repeat 50% 50%;
+        transform: translate(-50px, 40px);
+        opacity: 0;
+      }
+
+      &:hover{
+        &::before{
+          transform: translate(50px, -40px);
+          opacity: 0;
+        }
+        &::after{
+          transform: none;
+          opacity: 1;
+        }
+      }
     }
   }
 }
@@ -416,6 +446,10 @@ a,span{
   .calendar-event-info{
     position: relative;
 
+    img{
+      height: 100%;
+    }
+
     &::after{
       content: '';
       position: absolute;
@@ -449,16 +483,20 @@ a,span{
   }
 
   #calendar{
-    // width: 60%;
     background-color: #000000;
     color: $color-white;
     font-family: 'Montserrat', sans-serif;
     padding: 37px;
-  
+    z-index: 1;
+    
   th, td{
     border: none;
   }
   
+  .fc-dayGrid-view .fc-body .fc-row {
+    min-height: 3em;
+  }
+
   .fc-toolbar h2{
     text-transform: capitalize;
   }
@@ -488,6 +526,11 @@ a,span{
     text-transform: uppercase;
   }
 
+  .fc-day-top.fc-other-month{
+    opacity: 1;
+    color: #414b58;
+  }
+
   .fc-day{
     text-align: center;
     position: relative;
@@ -509,10 +552,19 @@ a,span{
       content: '\2022';
       color: #ecc30a;
       font-size: 2rem;
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      top: 0;
     }
   }
 
   .fc-event-container{
+
+    .fc-event{
+      bottom: 9px;
+    }
+
     & .fc-event.fc-start.fc-not-end{
       height: 26px;
       background: linear-gradient(to right, #1596c4,  #1396c4);
@@ -534,6 +586,8 @@ a,span{
         background: linear-gradient(to right, #c356e7,  #1396c4);
         height: 26px;
         border: none;
+      }
+      & .fc-event.fc-start.fc-end{
         border-radius: 10px;
       }
     }
@@ -547,6 +601,10 @@ a,span{
           content: '\2022';
           color: #ecc30a;
           font-size: 2rem;
+          position: absolute;
+          transform: translateX(-50%);
+          left: 50%;
+          top: 0;
         }
       }
     }
@@ -555,10 +613,14 @@ a,span{
   
     .fc-day-top{
       text-align: center;
+      position: relative;
+      top: 15px;
+      z-index: 10;
     }
     .fc-day-number{
     float: none;
     font-weight: 700;
+
     }
 
     //gradients
@@ -620,6 +682,7 @@ a,span{
   }
 
   }
+ 
 
 }
 // === / Calendar ===

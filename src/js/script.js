@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     locale: 'ru', //язык ррусский
     height: 'auto',
     // aspectRatio: 1.09,
-    contentHeight: 200,
+    contentHeight: 100,
     eventStartEditable: false,
-    navLinks: true, // делает дни кликабельными
+    navLinks: false, // делает дни кликабельными
     //eventLimit: 1, // ограничение на показ событий за день
     eventLimitText: "", 
     header: {
@@ -59,14 +59,20 @@ document.addEventListener('DOMContentLoaded', function() {
     },{
       id: 2,
       title: 'Соревнования',
-      start: '2020-05-27',
-      end: '2020-06-03',
+      start: '2020-05-23',
+      end: '2020-06-05',
       description: 'Заплыв'
     },{
       id: 3,
       title: 'Соревнования',
       start: '2020-05-15',
       description: 'Заплыв'
+    },{
+      id: 4,
+      title: 'dd',
+      start: '2020-05-04',
+      end: '2020-05-08',
+      description: 'Заплыв два'
     }]
     // eventRender: function(event, element) {
     //   element.qtip({
