@@ -9,6 +9,11 @@ a, span {
   font-family: 'Montserrat', sans-serif;
 }
 
+.section-outer {
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+}
+
 .section-inner {
   max-width: 1180px;
   margin: 0 auto;
@@ -130,6 +135,57 @@ a, span {
   opacity: 1;
 }
 
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .header {
+    height: 60px;
+  }
+  .header-main-ref {
+    margin-right: 40px;
+  }
+  .header-main-ref__logo img {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    height: auto;
+  }
+  .header .section-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header-main-ref {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #059bc1;
+  }
+  .header-main-ref__logo img {
+    width: 80px;
+  }
+  .header-buttons {
+    width: 100%;
+    padding: 10px 0;
+  }
+  .header-buttons__exit {
+    color: #059bc1;
+    display: inline;
+    line-height: normal;
+    background-color: transparent;
+    padding: 0;
+    height: auto;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .header div > a {
+    width: 90px;
+    text-align: center;
+  }
+}
+
 .athlete-info {
   margin-bottom: 15px;
 }
@@ -159,7 +215,7 @@ a, span {
   background-color: #ffffff;
   position: absolute;
   display: block;
-  bottom: 20px;
+  top: 260px;
   left: 20px;
   width: 300px;
   padding: 20px;
@@ -211,11 +267,12 @@ a, span {
 
 .athlete-info-charts__wrapper .chart-item {
   text-align: center;
+  width: 130px;
   color: #8c9198;
+  margin-bottom: 15px;
 }
 
 .athlete-info-charts__wrapper .chart-item__svg-wrapper {
-  width: 130px;
   position: relative;
 }
 
@@ -307,6 +364,88 @@ a, span {
 .athlete-info-charts__coach .name {
   font-weight: bold;
   font-style: italic;
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .athlete-info-avatar {
+    margin-right: 35px;
+  }
+  .athlete-info-charts {
+    margin-top: 0;
+  }
+  .athlete-info-charts__title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .athlete-info-charts__wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 0 auto 20px auto;
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .athlete-info .section-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .athlete-info-avatar {
+    margin: 0 auto;
+  }
+  .athlete-info-charts {
+    margin-top: 15px;
+  }
+  .athlete-info-charts__title {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .athlete-info-charts__wrapper {
+    margin-bottom: 20px;
+  }
+  .athlete-info-charts__coach {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 12px;
+  }
+  .athlete-info-avatar__photo {
+    height: auto;
+    width: 260px;
+  }
+  .athlete-info-avatar__fullname {
+    width: 240px;
+    top: 216px;
+    left: 10px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .athlete-info-avatar__fullname .name {
+    font-size: 1.225rem;
+  }
+  .athlete-info-charts__wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0 auto 20px auto;
+    width: auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .athlete-info-charts__wrapper .chart-item {
+    width: 110px;
+    margin: 0 15px 15px;
+  }
+  .athlete-info-charts__coach {
+    text-align: center;
+  }
 }
 
 .training-statistics {
@@ -450,6 +589,9 @@ a, span {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -605,17 +747,29 @@ a, span {
   background: none;
 }
 
-.calendar #calendar .fc-widget-content.fc-today::after {
+.calendar #calendar .fc-content-skeleton .fc-today::after, .calendar #calendar .fc-content-skeleton .fc-today::before {
   content: '';
-  width: 1.4rem;
-  height: 1.4rem;
-  border: 2px solid #7ab046;
+  border-style: solid;
   border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.calendar #calendar .fc-content-skeleton .fc-today::after {
+  width: calc(1.7rem + 3px);
+  height: calc(1.7rem + 3px);
+  border-width: 3px;
+  border-color: #7ab046;
+}
+
+.calendar #calendar .fc-content-skeleton .fc-today::before {
+  width: calc(1.7rem - 1px);
+  height: calc(1.7rem - 1px);
+  border-width: 6px;
+  border-color: #000000;
 }
 
 .calendar #calendar .fc-day-header {

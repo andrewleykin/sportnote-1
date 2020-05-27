@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // aspectRatio: 1.09,
     contentHeight: 100,
     eventStartEditable: false,
-    navLinks: false, // делает дни кликабельными
+    navLinks: true, // делает дни кликабельными
+    
     //eventLimit: 1, // ограничение на показ событий за день
     eventLimitText: "", 
     header: {
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
       start: '2020-05-04',
       end: '2020-05-08',
       description: 'Заплыв два'
-    }]
+    }],
     // eventRender: function(event, element) {
     //   element.qtip({
     //     content: event.description + '<br />' + event.start,
@@ -89,7 +90,18 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     //   });
     // }
+
+//что будет происходить при клике
+navLinkDayClick: function(date, jsEvent) {
+  // jsEvent.preventDefault();
+  console.log('day', date.toISOString());
+  // console.log(date);
+  // calendar.gotoDate (date);
+}
+
   });
 
   calendar.render();
 });
+
+$('#calendar').fullCalendar( 'gotoDate', currentdate);
