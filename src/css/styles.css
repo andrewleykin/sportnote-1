@@ -451,11 +451,12 @@ a, span {
 .training-statistics {
   overflow: hidden;
   margin-bottom: 15px;
+  color: #4e4f53;
 }
 
 .training-statistics .section-inner {
   background-color: #f8f9fa;
-  padding: 15px 50px;
+  padding: 15px 50px 32px;
   border-radius: 1rem;
 }
 
@@ -570,25 +571,64 @@ a, span {
 
 .training-statistics .main-slider__item.slick-current {
   color: #059bc1;
+  border-right: none;
 }
 
 .training-statistics .info-slider {
-  position: relative;
+  width: 100%;
+  height: 290px;
+}
+
+.training-statistics .info-slider-wrapper {
   padding-left: 50px;
   padding-top: 30px;
   width: 80%;
-  height: 290px;
+  position: relative;
   min-width: 0;
+}
+
+.training-statistics .info-slider-data {
+  margin-bottom: 2.1875rem;
+}
+
+.training-statistics .info-slider-data .total-distance,
+.training-statistics .info-slider-data .training-time {
+  font-weight: 900;
+  font-style: italic;
+}
+
+.training-statistics .info-slider-data .total-distance::after {
+  content: " м";
+}
+
+.training-statistics .info-slider-data .training-time::after {
+  content: " минут";
+}
+
+.training-statistics .info-slider-buttons button {
+  color: #ffffff;
+  font-weight: 700;
+  background-color: #059bc1;
+  border: none;
+  border-radius: 4px;
+  line-height: 2rem;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.training-statistics .info-slider-buttons button:disabled {
+  background-color: #a7a7a7;
+  cursor: auto;
+}
+
+.training-statistics .info-slider-buttons span {
+  white-space: nowrap;
 }
 
 .training-statistics .info-slider .slick-track {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -631,6 +671,10 @@ a, span {
   cursor: pointer;
 }
 
+.training-statistics .info-slider__item .row-property__none:hover {
+  opacity: .7;
+}
+
 .training-statistics .info-slider__item .row-property__mark {
   display: block;
   height: 1rem;
@@ -661,6 +705,88 @@ a, span {
 .training-statistics .info-slider__item .row-property__mark.five {
   background-image: -webkit-gradient(linear, left top, right top, from(#2ccb09), to(#8ed515));
   background-image: linear-gradient(to right, #2ccb09, #8ed515);
+}
+
+@media screen and (max-width: 767px) {
+  .training-statistics .section-inner {
+    padding: 15px 20px;
+  }
+  .training-statistics .main-slider {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .training-statistics .main-slider .slick-track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .training-statistics .main-slider .slick-track div:first-child {
+    border-left: 1px solid #dddddd;
+  }
+  .training-statistics .main-slider__item.slick-current {
+    border-right: 1px solid #dddddd;
+    border-bottom: none;
+  }
+  .training-statistics .main-slider__item {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 60px;
+  }
+  .training-statistics .info-slider-wrapper {
+    padding: 15px 10px;
+    width: 100%;
+  }
+  .training-statistics .info-slider-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .training-statistics .info-slider__item .row-property__mark {
+    width: 100px;
+  }
+  .training-statistics__table-header {
+    position: relative;
+  }
+  .training-statistics__table-header .wrapper {
+    padding: 0 10px;
+    position: absolute;
+    top: 130px;
+    width: 100%;
+  }
+  .training-statistics-table {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .training-statistics .section-inner {
+    padding: 15px 10px;
+    text-align: center;
+  }
+  .training-statistics .info-slider {
+    height: 200px;
+  }
+  .training-statistics .info-slider__item .row-property__mark {
+    width: 60px;
+  }
+  .training-statistics__table-header {
+    padding-top: 10px;
+  }
+  .training-statistics__table-header .date-location {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  .training-statistics__table-header .wrapper {
+    top: 120px;
+  }
 }
 
 .calendar .section-inner {
@@ -932,6 +1058,47 @@ a, span {
 .calendar #calendar .fc-event-container[colspan="7"] .fc-event.fc-start.fc-end {
   background: -webkit-gradient(linear, left top, right top, from(#c356e7), to(#1396c4));
   background: linear-gradient(to right, #c356e7, #1396c4);
+}
+
+@media screen and (max-width: 991px) {
+  .calendar .section-inner {
+    border-radius: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .calendar-event-info {
+    height: 220px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .calendar-event-info img {
+    height: auto !important;
+    width: 100%;
+    position: relative;
+    top: -100%;
+  }
+  .calendar-event-info__message-wrapper span {
+    width: auto !important;
+  }
+  .calendar #calendar {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .calendar-event-info {
+    height: 150px;
+  }
+  .calendar .calendar-event-info__message-wrapper {
+    padding: 16px 30px;
+  }
+  .calendar-event-info img {
+    top: -50%;
+  }
 }
 
 .footer .section-inner {

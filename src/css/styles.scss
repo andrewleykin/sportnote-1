@@ -368,7 +368,6 @@ a,span{
     }
   }
 }
-
 @media screen and (max-width: $screen-sm){
   html {
     font-size: 12px;
@@ -409,18 +408,17 @@ a,span{
   }
   
 }
-
-
 // === / Athlete info ===
 
 // === Training statistics ===
 .training-statistics{
   overflow: hidden;
   margin-bottom: 15px;
+  color: #4e4f53;
 
   .section-inner{
     background-color: #f8f9fa;
-    padding: 15px 50px;
+    padding: 15px 50px 32px;
     border-radius: 1rem;
   }
   &__title{
@@ -503,39 +501,73 @@ a,span{
       font-size: 1rem;//0.875rem;
       display: flex;
       flex-direction: column;
-      // align-items: center;
       justify-content: center;
 
       time{
-        // display: block;
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
       }
 
       &.slick-current{
         color: $color-main;
+        border-right: none;
       }
     }
 
   }
   .info-slider{
-    position: relative;
-    padding-left: 50px;
-    padding-top: 30px;
-    width: 80%;
+    width: 100%;
     height: 290px;
-    min-width: 0;
+
+    &-wrapper{
+      padding-left: 50px;
+      padding-top: 30px;
+      width: 80%;
+      position: relative;
+      min-width: 0;
+    }
+    &-data{
+      margin-bottom: 2.1875rem;
+
+      .total-distance,
+      .training-time{
+        font-weight: 900;
+        font-style: italic;
+      }
+      .total-distance::after{
+        content: " м";
+      }
+      .training-time::after{
+        content: " минут";
+      }
+    }
+    &-buttons{
+      
+      button{
+        color: $color-white;
+        font-weight: 700;
+        background-color: $color-main;
+        border: none;
+        border-radius: 4px;
+        line-height: 2rem;
+        padding: 0 1rem;
+        cursor: pointer;
+
+        &:disabled{
+          background-color: #a7a7a7;
+          cursor: auto;
+        }
+      }
+      span{
+        white-space: nowrap;
+      }
+    }
 
     .slick-track{
       display: flex;
-      flex-direction: column;
       align-items: flex-start;
       justify-content: flex-start;
     }
-
-    // .slick-list{
-    //   overflow: hidden;
-    // }
 
     &__item{
       text-align: center;
@@ -561,6 +593,9 @@ a,span{
           height: 1.8rem;
           background: url(../img/cancel.svg) 50% 50% / 0.9rem no-repeat;
           cursor: pointer;
+          &:hover{
+            opacity: .7;
+          }
         }
         &__mark{
           display: block;
@@ -586,6 +621,94 @@ a,span{
           
         }
       }
+    }
+  }
+}
+// Media Mobile
+@media screen and (max-width: $screen-sm-max){
+
+  .training-statistics{
+    .section-inner{
+      padding: 15px 20px;
+    }
+
+    .main-slider {
+      width: 100%;
+      margin-bottom: 30px;
+
+      .slick-track{
+        display: flex;
+
+        div:first-child{
+          border-left: 1px solid #dddddd;
+        }
+      }
+
+      &__item.slick-current{
+        border-right: 1px solid #dddddd;
+        border-bottom: none;
+      }
+
+      &__item{
+        align-items: center;
+        height: 60px;
+      }
+    }
+    
+    .info-slider{
+
+      &-wrapper{
+        padding: 15px 10px;
+        width: 100%;
+      }
+      
+      &-buttons{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__item .row-property__mark{
+        width: 100px;
+      }
+    }
+    &__table-header{
+      position: relative;
+
+      & .wrapper{
+       padding: 0 10px;
+       position: absolute;
+       top: 130px;
+       width: 100%;
+     }
+    }
+    &-table{
+      flex-direction: column;
+    }
+  } 
+}
+
+@media screen and (max-width: $screen-sm){
+  .training-statistics .section-inner {
+    padding: 15px 10px;
+    text-align: center;
+  }
+
+  .training-statistics .info-slider{
+    height: 200px;
+  }
+
+  .training-statistics .info-slider__item .row-property__mark{
+    width: 60px;
+  }
+
+  .training-statistics__table-header {
+    padding-top: 10px;
+
+    .date-location{
+      flex-grow: 1;
+    }
+    .wrapper{
+      top: 120px;
     }
   }
 }
@@ -854,8 +977,52 @@ a,span{
   }
 
   }
- 
+}
 
+// Media Mobile
+@media screen and (max-width: $screen-md-max){
+  .calendar{
+
+    .section-inner{
+      border-radius: 0;
+      flex-direction: column;
+    }
+    &-event-info{
+      height: 220px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      overflow: hidden;
+
+      img{
+        height: auto !important;
+        width: 100%;
+        position: relative;
+        top: -100%;
+      }
+
+      &__message-wrapper span{
+        width: auto !important;
+      }
+    }
+
+    #calendar{
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+  }
+}
+
+@media screen and (max-width: $screen-sm){
+  .calendar-event-info{
+    height: 150px;
+  }
+  .calendar .calendar-event-info__message-wrapper{
+    padding: 16px 30px;
+  }
+  .calendar-event-info img {
+    top: -50%;
+  }
 }
 // === / Calendar ===
 

@@ -1,12 +1,29 @@
 $(document).ready(function(){
   $('.main-slider').slick({
     arrows: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     vertical: true,
     infinite: false,
     asNavFor: ".info-slider",
     initialSlide: 0,
-    focusOnSelect: true
+    focusOnSelect: true,
+    responsive:[
+      {
+        breakpoint: 767,
+        settings: {
+          vertical: false,
+          arrows: false
+        }
+      },{
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+          vertical: false,
+          arrows: false
+        }
+      }
+
+    ]
   });
 
   $('.info-slider').slick({
