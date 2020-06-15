@@ -34,7 +34,7 @@ a,span{
   padding-left: 1.25rem;
 }
 .section-inner {
-  max-width: 1180px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 // === / Common ===
@@ -101,7 +101,7 @@ a,span{
         position: absolute;
         top: 0;right: 0;left: 0;bottom: 0;
         background-size: contain;
-        transition: all 200ms ease 50ms;
+        transition: all 400ms ease 50ms;
       }
 
       &::before{
@@ -304,7 +304,9 @@ a,span{
           font-weight: bold;
           font-style: italic;
         }
-        &__name{}
+        &__name{
+          font-size: 1.25rem;
+        }
       }
     }
     &__coach{
@@ -416,6 +418,10 @@ a,span{
   margin-bottom: 15px;
   color: #4e4f53;
 
+  *:focus{
+    outline:none;
+  }
+
   .section-inner{
     background-color: #f8f9fa;
     padding: 15px 50px 32px;
@@ -495,6 +501,7 @@ a,span{
     }
     &__item{
       height: 75px;
+      position: relative;
       border-right: 1px solid #dddddd;
       border-bottom: 1px solid #dddddd;
       color: #ababab;
@@ -502,15 +509,65 @@ a,span{
       display: flex;
       flex-direction: column;
       justify-content: center;
+      cursor: pointer;
+
+      &:focus{
+        outline:none;
+      }
 
       time{
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
       }
 
+      .attendance_checkbox{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        
+
+        span::before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          top: 0;
+          display: block;
+          border-style: solid;
+          border-width: 1px;
+          border-radius: 2px;
+        }
+
+        input{
+          z-index: -1;
+          opacity: 0;
+          width: 10px;
+          height: 10px;
+
+          &:disabled+span::before{
+            border-color: #ababab;
+          }
+          &:disabled:checked+span::before{
+            background-color: #ababab;
+          }
+        }
+
+        
+      }
+
       &.slick-current{
         color: $color-main;
-        border-right: none;
+        border-right-color: transparent;
+
+        .attendance_checkbox{
+            input:disabled+span::before{
+              border-color: $color-main;
+            }
+            input:disabled:checked+span::before{
+              background-color: $color-main;
+            }
+        }
       }
     }
 
@@ -599,25 +656,28 @@ a,span{
         }
         &__mark{
           display: block;
-          height: 1rem;
+          height: 1.2rem;
           width: 120px;
+          border: 1px solid #ababab;
           border-radius: 3px;
+          background: transparent;
+          font-family: 'Montserrat', sans-serif;
 
-          &.one{
-            background-image: linear-gradient(to right, #7d4cf0, #183cdc);
-          }
-          &.two{
-            background-image: linear-gradient(to right, #f04c99, #c730db);
-          }
-          &.three{
-            background-image: linear-gradient(to right, #f79132, #f53d99);
-          }
-          &.four{
-            background-image: linear-gradient(to right, #f7d932, #d2fd35);
-          }
-          &.five{
-            background-image: linear-gradient(to right, #2ccb09, #8ed515);
-          }
+          // &.one{
+          //   background-image: linear-gradient(to right, #7d4cf0, #183cdc);
+          // }
+          // &.two{
+          //   background-image: linear-gradient(to right, #f04c99, #c730db);
+          // }
+          // &.three{
+          //   background-image: linear-gradient(to right, #f79132, #f53d99);
+          // }
+          // &.four{
+          //   background-image: linear-gradient(to right, #f7d932, #d2fd35);
+          // }
+          // &.five{
+          //   background-image: linear-gradient(to right, #2ccb09, #8ed515);
+          // }
           
         }
       }
@@ -787,10 +847,18 @@ a,span{
   }
 
   .fc-widget-content.fc-today{
-    background: none;
+    background: none; 
   }
 
-  .fc-content-skeleton .fc-today{
+  .fc-row .fc-highlight-skeleton{
+    z-index: auto;
+  }
+
+  .fc-highlight{
+    background-color: transparent;
+    opacity: 1;
+    position: relative;
+    z-index: 5;
 
     &::after,
     &::before{
@@ -798,7 +866,7 @@ a,span{
       border-style: solid;
       border-radius: 50%;
       position: absolute;
-      top: 50%;
+      top: 52%;
       left: 50%;
       transform: translate(-50%,-50%);
     }

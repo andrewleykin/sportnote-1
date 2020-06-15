@@ -15,7 +15,7 @@ a, span {
 }
 
 .section-inner {
-  max-width: 1180px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -108,8 +108,8 @@ a, span {
   left: 0;
   bottom: 0;
   background-size: contain;
-  -webkit-transition: all 200ms ease 50ms;
-  transition: all 200ms ease 50ms;
+  -webkit-transition: all 400ms ease 50ms;
+  transition: all 400ms ease 50ms;
 }
 
 .header-buttons__social::before {
@@ -356,6 +356,10 @@ a, span {
   font-style: italic;
 }
 
+.athlete-info-charts__wrapper .chart-item__name {
+  font-size: 1.25rem;
+}
+
 .athlete-info-charts__coach {
   font-size: 1.25rem;
   text-transform: uppercase;
@@ -454,6 +458,10 @@ a, span {
   color: #4e4f53;
 }
 
+.training-statistics *:focus {
+  outline: none;
+}
+
 .training-statistics .section-inner {
   background-color: #f8f9fa;
   padding: 15px 50px 32px;
@@ -548,6 +556,7 @@ a, span {
 
 .training-statistics .main-slider__item {
   height: 75px;
+  position: relative;
   border-right: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
   color: #ababab;
@@ -562,6 +571,11 @@ a, span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
+}
+
+.training-statistics .main-slider__item:focus {
+  outline: none;
 }
 
 .training-statistics .main-slider__item time {
@@ -569,9 +583,52 @@ a, span {
   font-weight: 800;
 }
 
+.training-statistics .main-slider__item .attendance_checkbox {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.training-statistics .main-slider__item .attendance_checkbox span::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  display: block;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+}
+
+.training-statistics .main-slider__item .attendance_checkbox input {
+  z-index: -1;
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+}
+
+.training-statistics .main-slider__item .attendance_checkbox input:disabled + span::before {
+  border-color: #ababab;
+}
+
+.training-statistics .main-slider__item .attendance_checkbox input:disabled:checked + span::before {
+  background-color: #ababab;
+}
+
 .training-statistics .main-slider__item.slick-current {
   color: #059bc1;
-  border-right: none;
+  border-right-color: transparent;
+}
+
+.training-statistics .main-slider__item.slick-current .attendance_checkbox input:disabled + span::before {
+  border-color: #059bc1;
+}
+
+.training-statistics .main-slider__item.slick-current .attendance_checkbox input:disabled:checked + span::before {
+  background-color: #059bc1;
 }
 
 .training-statistics .info-slider {
@@ -677,34 +734,12 @@ a, span {
 
 .training-statistics .info-slider__item .row-property__mark {
   display: block;
-  height: 1rem;
+  height: 1.2rem;
   width: 120px;
+  border: 1px solid #ababab;
   border-radius: 3px;
-}
-
-.training-statistics .info-slider__item .row-property__mark.one {
-  background-image: -webkit-gradient(linear, left top, right top, from(#7d4cf0), to(#183cdc));
-  background-image: linear-gradient(to right, #7d4cf0, #183cdc);
-}
-
-.training-statistics .info-slider__item .row-property__mark.two {
-  background-image: -webkit-gradient(linear, left top, right top, from(#f04c99), to(#c730db));
-  background-image: linear-gradient(to right, #f04c99, #c730db);
-}
-
-.training-statistics .info-slider__item .row-property__mark.three {
-  background-image: -webkit-gradient(linear, left top, right top, from(#f79132), to(#f53d99));
-  background-image: linear-gradient(to right, #f79132, #f53d99);
-}
-
-.training-statistics .info-slider__item .row-property__mark.four {
-  background-image: -webkit-gradient(linear, left top, right top, from(#f7d932), to(#d2fd35));
-  background-image: linear-gradient(to right, #f7d932, #d2fd35);
-}
-
-.training-statistics .info-slider__item .row-property__mark.five {
-  background-image: -webkit-gradient(linear, left top, right top, from(#2ccb09), to(#8ed515));
-  background-image: linear-gradient(to right, #2ccb09, #8ed515);
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media screen and (max-width: 767px) {
@@ -873,25 +908,36 @@ a, span {
   background: none;
 }
 
-.calendar #calendar .fc-content-skeleton .fc-today::after, .calendar #calendar .fc-content-skeleton .fc-today::before {
+.calendar #calendar .fc-row .fc-highlight-skeleton {
+  z-index: auto;
+}
+
+.calendar #calendar .fc-highlight {
+  background-color: transparent;
+  opacity: 1;
+  position: relative;
+  z-index: 5;
+}
+
+.calendar #calendar .fc-highlight::after, .calendar #calendar .fc-highlight::before {
   content: '';
   border-style: solid;
   border-radius: 50%;
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 
-.calendar #calendar .fc-content-skeleton .fc-today::after {
+.calendar #calendar .fc-highlight::after {
   width: calc(1.7rem + 3px);
   height: calc(1.7rem + 3px);
   border-width: 3px;
   border-color: #7ab046;
 }
 
-.calendar #calendar .fc-content-skeleton .fc-today::before {
+.calendar #calendar .fc-highlight::before {
   width: calc(1.7rem - 1px);
   height: calc(1.7rem - 1px);
   border-width: 6px;

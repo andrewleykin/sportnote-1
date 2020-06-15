@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('.main-slider').slick({
     arrows: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     vertical: true,
     infinite: false,
     asNavFor: ".info-slider",
@@ -28,18 +28,13 @@ $(document).ready(function(){
 
   $('.info-slider').slick({
     arrows: false,
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     fade: true,
-    // vertical: true,
     infinite: false,
     asNavFor: ".main-slider",
     initialSlide: 0
   });
-
-  // $('.main-slider__item').click(function(){
-  //   $('.main-slider__item').toggleClass('active');
-  // });
 });
 
 // fullcalendar 
@@ -50,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     plugins: [ 'dayGrid', 'timeGrid', 'list' ],
     locale: 'ru', //язык ррусский
     height: 'auto',
-    // aspectRatio: 1.09,
     contentHeight: 100,
     eventStartEditable: false,
     navLinks: true, // делает дни кликабельными
@@ -68,57 +62,34 @@ document.addEventListener('DOMContentLoaded', function() {
     editable: true,
     selectable: true,
     firstDay: 1, // день с которого начинается неделя 1=пн
-    
-    events: [{
-      id: 1,
-      title: 'Это первый обычный день',
-      start: '2020-05-20',
-      description: 'Первая дата'
-    },{
-      id: 2,
-      title: 'Соревнования',
-      start: '2020-05-23',
-      end: '2020-06-05',
-      description: 'Заплыв'
-    },{
-      id: 3,
-      title: 'Соревнования',
-      start: '2020-05-15',
-      description: 'Заплыв'
-    },{
-      id: 4,
-      title: 'dd',
-      start: '2020-05-04',
-      end: '2020-05-08',
-      description: 'Заплыв два'
-    }],
-    // eventRender: function(event, element) {
-    //   element.qtip({
-    //     content: event.description + '<br />' + event.start,
-    //     style: {
-    //       background: 'black',
-    //       color: '#FFFFFF'
-    //     },
-    //     position: {
-    //       corner: {
-    //         target: 'center',
-    //         tooltip: 'bottomMiddle'
-    //       }
-    //     }
-    //   });
-    // }
+    selectable: true,
 
-//что будет происходить при клике
+    eventSources: [
+      'js/file.json'
+    ],
+
+    
+//что будет происходить при клике currentdate;
 navLinkDayClick: function(date, jsEvent) {
-  // jsEvent.preventDefault();
-  console.log('day', date.toISOString());
-  // console.log(date);
-  // calendar.gotoDate (date);
+  console.log(date.toJSON().split("T")[0]);
+  console.log(date.getDate());
+  calendar.select( date );
 }
 
   });
 
+
   calendar.render();
+  // console.log(calendar.renderableEventStore.instances.1.(range));
+  // console.log(for ("instances" in calendar));
+
+  // console.log(calendarEl);
+  console.log();
 });
 
-$('#calendar').fullCalendar( 'gotoDate', currentdate);
+
+
+
+
+
+
