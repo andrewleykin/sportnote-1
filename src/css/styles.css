@@ -880,11 +880,9 @@ a, span {
 }
 
 .calendar #calendar {
-  background-color: #000000;
+  border-bottom: 1px solid #16202e;
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
-  padding: 37px;
-  z-index: 1;
 }
 
 .calendar #calendar th, .calendar #calendar td {
@@ -1104,6 +1102,55 @@ a, span {
 .calendar #calendar .fc-event-container[colspan="7"] .fc-event.fc-start.fc-end {
   background: -webkit-gradient(linear, left top, right top, from(#c356e7), to(#1396c4));
   background: linear-gradient(to right, #c356e7, #1396c4);
+}
+
+.calendar .calendar-wrapper {
+  background-color: #000000;
+  z-index: 1;
+  position: relative;
+  padding: 37px;
+}
+
+.calendar .calendar-wrapper .calendar__time-location {
+  padding-top: 20px;
+  padding-left: 35px;
+  height: 54px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.calendar .calendar-wrapper .calendar__time-location .time {
+  color: #ecc30a;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.calendar .calendar-wrapper .calendar__time-location .time_hours-span {
+  font-size: 30px;
+}
+
+.calendar .calendar-wrapper .calendar__time-location .time_minutes-span {
+  position: relative;
+  top: -0.5em;
+  font-size: 18px;
+}
+
+.calendar .calendar-wrapper .calendar__time-location .location {
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.calendar .calendar-wrapper .calendar__time-location .location_duration-span {
+  font-style: italic;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 991px) {

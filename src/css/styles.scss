@@ -819,15 +819,12 @@ a,span{
         width: 80%;
       }
     }
-    
   }
 
   #calendar{
-    background-color: #000000;
+    border-bottom: 1px solid #16202e;
     color: $color-white;
     font-family: 'Montserrat', sans-serif;
-    padding: 37px;
-    z-index: 1;
     
   th, td{
     border: none;
@@ -1044,6 +1041,46 @@ a,span{
     }
   }
 
+  }
+
+  .calendar-wrapper{
+    background-color: #000000;
+    z-index: 1;
+    position: relative;
+    padding: 37px;
+
+    .calendar__time-location{
+      padding-top: 20px;
+      padding-left: 35px;
+      height: 54px;
+      color: white;
+      display: flex; 
+  
+      .time{
+        color:#ecc30a;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+  
+        &_hours-span{
+          font-size: 30px;
+        }
+        &_minutes-span{
+          position: relative;
+          top: -0.5em;
+          font-size: 18px;
+        }
+      }
+      .location{
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        &_duration-span{
+          font-style: italic;
+          font-weight: 700;
+        }
+        &_take-span{}
+      }
+    }
   }
 }
 
