@@ -92,8 +92,31 @@ document.addEventListener('DOMContentLoaded', function() {
     eventLimitText: "", 
     header: {
       left: 'prev,next today',
-      center: '',
+      center: 'addEventButton',
       right: 'title'
+    },
+    customButtons: {
+      addEventButton: {
+        text: 'Добавить событие',
+        click: function() {
+          var dateStr = prompt('Введите дату в формате ГГГГ-ММ-ДД');
+          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+
+          if (!isNaN(date.valueOf())) { // valid?
+            calendar.addEvent({
+              title: '',
+              start: date,
+              time: "12:00",
+              description: "Заплыв два",
+              locDur: "Бассейн, 1 час 30 минут",
+              locTake: "Лопатки, ласты, грузы"
+            });
+            alert('Отлично. Теперь обновите вашу базу данных ...');
+          } else {
+            alert('Неправильная дата.');
+          }
+        }
+      }
     },
     buttonText: { // показывает какой текст будет в кнопках
       today: 'Сегодня',
@@ -143,6 +166,40 @@ navLinkDayClick: function(date, jsEvent) {
 });
 
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      center: 'addEventButton'
+    },
+    customButtons: {
+      addEventButton: {
+        text: 'Добавить событие',
+        click: function() {
+          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+
+          if (!isNaN(date.valueOf())) { // valid?
+            calendar.addEvent({
+              title: 'dynamic event',
+              start: date,
+              allDay: true
+            });
+            alert('Great. Now, update your database...');
+          } else {
+            alert('Invalid date.');
+          }
+        }
+      }
+    }
+  });
+
+  calendar.render();
+});
 
 
 

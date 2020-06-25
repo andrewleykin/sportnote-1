@@ -781,6 +781,7 @@ a,span{
     justify-content: space-between;
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
   }
 
   .calendar-event-info{
@@ -826,10 +827,25 @@ a,span{
     color: $color-white;
     font-family: 'Montserrat', sans-serif;
     
-  th, td{
-    border: none;
-  }
+    th, td{
+      border: none;
+    }
   
+  .fc-addEventButton-button{
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+    background-color: $color-main;
+    border: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: .2s;
+
+    &:hover{
+      background-color: #087591;
+    }
+  }
+
   .fc-dayGrid-view .fc-body .fc-row {
     min-height: 3em;
   }
@@ -1046,7 +1062,7 @@ a,span{
   .calendar-wrapper{
     background-color: #000000;
     z-index: 1;
-    position: relative;
+    // position: relative;
     padding: 37px;
 
     .calendar__time-location{
@@ -1110,25 +1126,67 @@ a,span{
       }
     }
 
-    #calendar{
+    .calendar-wrapper{
       border-radius: 8px;
       overflow: hidden;
     }
     
+    #calendar .fc-addEventButton-button{
+      left: auto;
+      right: 40px;
+    }
+
   }
 }
 
 @media screen and (max-width: $screen-sm){
-  .calendar-event-info{
-    height: 150px;
-  }
-  .calendar .calendar-event-info__message-wrapper{
-    padding: 16px 30px;
-  }
-  .calendar-event-info img {
-    top: -50%;
+  .calendar{
+    .calendar-event-info{
+      height: 150px;
+    }
+    .calendar-event-info__message-wrapper{
+      padding: 12px 12px;
+      text-align: center;
+    }
+    .calendar-event-info img {
+      top: -50%;
+    }
+    .calendar-wrapper {
+      padding: 12px;
+    }
+    .fc-toolbar h2 {
+      font-size: 1em;
+    }
+    .fc-today-button{
+      font-size: 0.8em;
+      margin: 0.75em; 
+    }
+    #calendar .fc-event-container:not([colspan]) .fc-event.fc-start.fc-end::after{
+      top: 4.2px;
+    }
+    #calendar .fc-highlight{
+      top: 3px;
+    }
+    .calendar-wrapper .calendar__time-location{
+      padding-left: 0;
+    }
+  
+    #calendar .fc-addEventButton-button{
+      position: static;
+      font-size: 0.8rem;
+      line-height: 10px;
+    }
+  
+    .fc-right{
+      padding-left: 10px;
+    }
+  
+    .fc-toolbar {
+      align-items: start;
+    }
   }
 }
+  
 // === / Calendar ===
 
 // === Footer ===

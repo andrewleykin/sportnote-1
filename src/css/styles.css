@@ -833,6 +833,7 @@ a, span {
           justify-content: space-between;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
 }
 
 .calendar .calendar-event-info {
@@ -887,6 +888,22 @@ a, span {
 
 .calendar #calendar th, .calendar #calendar td {
   border: none;
+}
+
+.calendar #calendar .fc-addEventButton-button {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  background-color: #059bc1;
+  border: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.calendar #calendar .fc-addEventButton-button:hover {
+  background-color: #087591;
 }
 
 .calendar #calendar .fc-dayGrid-view .fc-body .fc-row {
@@ -1107,7 +1124,6 @@ a, span {
 .calendar .calendar-wrapper {
   background-color: #000000;
   z-index: 1;
-  position: relative;
   padding: 37px;
 }
 
@@ -1176,21 +1192,58 @@ a, span {
   .calendar-event-info__message-wrapper span {
     width: auto !important;
   }
-  .calendar #calendar {
+  .calendar .calendar-wrapper {
     border-radius: 8px;
     overflow: hidden;
+  }
+  .calendar #calendar .fc-addEventButton-button {
+    left: auto;
+    right: 40px;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .calendar-event-info {
+  .calendar .calendar-event-info {
     height: 150px;
   }
   .calendar .calendar-event-info__message-wrapper {
-    padding: 16px 30px;
+    padding: 12px 12px;
+    text-align: center;
   }
-  .calendar-event-info img {
+  .calendar .calendar-event-info img {
     top: -50%;
+  }
+  .calendar .calendar-wrapper {
+    padding: 12px;
+  }
+  .calendar .fc-toolbar h2 {
+    font-size: 1em;
+  }
+  .calendar .fc-today-button {
+    font-size: 0.8em;
+    margin: 0.75em;
+  }
+  .calendar #calendar .fc-event-container:not([colspan]) .fc-event.fc-start.fc-end::after {
+    top: 4.2px;
+  }
+  .calendar #calendar .fc-highlight {
+    top: 3px;
+  }
+  .calendar .calendar-wrapper .calendar__time-location {
+    padding-left: 0;
+  }
+  .calendar #calendar .fc-addEventButton-button {
+    position: static;
+    font-size: 0.8rem;
+    line-height: 10px;
+  }
+  .calendar .fc-right {
+    padding-left: 10px;
+  }
+  .calendar .fc-toolbar {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
   }
 }
 
